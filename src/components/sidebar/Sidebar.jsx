@@ -51,7 +51,7 @@ const theme=useTheme();
             </Box>
             <Divider variant="middle" sx={{ mt: 0.5, mb: 1, color: "white" }} color={grey[600]} />
 
-            <Typography variant="subtitle2" sx={{ textAlign: "center" }} color={grey[700]}>توسعه یافته توسط zakhar <CopyrightIcon sx={{ color: grey[500] }} /> </Typography>
+            <Typography variant="subtitle2" sx={{ textAlign: "center" }} color={grey[700]}>POWER BY ENTERFIRE<CopyrightIcon sx={{ color: grey[500] }} /> </Typography>
         </Grid >
     )
 }

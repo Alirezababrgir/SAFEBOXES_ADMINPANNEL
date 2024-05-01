@@ -47,11 +47,11 @@ const Homepage = () => {
 
         <>
             <Helmet>
-                <title>بیوگرافی من | صفحه اصلی</title>
+                <title>PANNEL | INJECTBROKERLINKS</title>
             </Helmet>
             <Box sx={{ p: 3, height: "15vh" }}>
                 <Particles id="tsparticles" options={Part1} init={particlesInit} loaded={particlesLoaded} />
-                <Divider variant="middle" textAlign="right" sx={{ mt: 2, mb: 1, "&::before,&::after": { borderColor: "black" } }}><Slide direction="down" in={load} style={{ transitionDelay: load ? '1000ms' : '0ms' }}><Typography >سلام</Typography></Slide></Divider>
+                <Divider variant="middle" textAlign="right" sx={{ mt: 2, mb: 1, "&::before,&::after": { borderColor: "black" } }}><Slide direction="down" in={load} style={{ transitionDelay: load ? '1000ms' : '0ms' }}><Typography >INJECT BROKER LINKS</Typography></Slide></Divider>
             </Box>
             <Box sx={{ height: "85vh" }}>
                 <Homecontent index={index} />

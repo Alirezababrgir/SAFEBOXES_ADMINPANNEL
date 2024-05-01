@@ -1,10 +1,9 @@
-import { Avatar, Divider, Grid, Slide, TextField, InputAdornment, Button, CardActions, CardContent, Zoom, Typography } from "@mui/material";
+import { Divider, Grid, Slide, TextField, InputAdornment, Button, CardActions, CardContent, Zoom, Typography } from "@mui/material";
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useTheme } from "@emotion/react";
 import { grey } from "@mui/material/colors";
-import emailpng from "../../assetes/world-connection-flatline-bdcc8.png";
 import { Face6Rounded, SubjectRounded, EmailRounded } from "@mui/icons-material";
 import { useFormik } from 'formik';
 import { userSchema } from "./validation/FormSchema";
@@ -42,10 +41,10 @@ const ConnectMe = () => {
 
         <>
             <Helmet>
-                <title>بیوگرافی من | ارتباط با من </title>
+                <title>PANNEL | 5</title>
             </Helmet>
             <Box sx={{ p: 3, height: "10vh" }}>
-                <Divider variant="middle" textAlign="right" sx={{ mt: 2, mb: 1, "&::before,&::after": { borderColor: "black" } }}><Slide direction="down" in={load} style={{ transitionDelay: load ? '1000ms' : '0ms' }}><Typography>ارتباط با من</Typography></Slide></Divider>
+                <Divider variant="middle" textAlign="right" sx={{ mt: 2, mb: 1, "&::before,&::after": { borderColor: "black" } }}><Slide direction="down" in={load} style={{ transitionDelay: load ? '1000ms' : '0ms' }}><Typography>5</Typography></Slide></Divider>
             </Box>
             <Grid container sx={{ height: "90vh", }}>
                 <Zoom direction="down" in={load} style={{ transitionDelay: load ? '1500ms' : '0ms' }}>
@@ -171,9 +170,7 @@ const ConnectMe = () => {
                     </Grid>
                 </Zoom>
                 <Grid xs={12} lg={6} sx={{ display: "flex", flexWrap: "nowrap", justifyContent: "center", alignItems: "center" }}>
-                    <Slide direction="down" in={load} style={{ transitionDelay: load ? '600ms' : '0ms' }}>
-                        <Avatar variant="square" src={emailpng} sx={{ width: "90vh", height: "50vh", opacity: "30%" }} />
-                    </Slide>
+                  
                 </Grid>
             </Grid>
         </>
