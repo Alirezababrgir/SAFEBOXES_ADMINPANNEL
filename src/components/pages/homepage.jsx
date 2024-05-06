@@ -8,6 +8,7 @@ import { Part1 } from "../../layuot/particels";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Homecontent from "./Homecontent";
+import { useAccount } from "wagmi";
 
 const Homepage = () => {
 
@@ -42,7 +43,8 @@ const Homepage = () => {
         }
     }, []);
 
-
+    const { address } = useAccount()
+    console.log(address)
     return (
 
         <>
@@ -55,6 +57,7 @@ const Homepage = () => {
             </Box>
             <Box sx={{ height: "85vh" }}>
                 <Homecontent index={index} />
+                {address}
             </Box >
         </>
     )
