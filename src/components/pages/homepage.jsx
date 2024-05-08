@@ -8,7 +8,6 @@ import { Part1 } from "../../layuot/particels";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Homecontent from "./Homecontent";
-import { useAccount } from "wagmi";
 
 const Homepage = () => {
 
@@ -23,18 +22,6 @@ const Homepage = () => {
     }, []);
 
 
-
-    const [index, setIndex] = useState(0);
-
-    useEffect(() => {
-        const intervalId = setInterval(
-            () => setIndex((index) => index + 1),
-            3000, // every 3 seconds
-        );
-        return () => clearTimeout(intervalId);
-    }, []);
-
-
     const [load, setload] = useState(false);
     useEffect(() => {
         setload(true);      //Mount
@@ -43,23 +30,20 @@ const Homepage = () => {
         }
     }, []);
 
-    const { address } = useAccount()
-    console.log(address)
     return (
 
-        <>
+        <div class="connectwalletbg">
             <Helmet>
                 <title>PANNEL | INJECTBROKERLINKS</title>
             </Helmet>
-            <Box sx={{ p: 3, height: "15vh" }}>
+            <Box sx={{ p: 3, height: "10vh" }}>
                 <Particles id="tsparticles" options={Part1} init={particlesInit} loaded={particlesLoaded} />
                 <Divider variant="middle" textAlign="right" sx={{ mt: 2, mb: 1, "&::before,&::after": { borderColor: "black" } }}><Slide direction="down" in={load} style={{ transitionDelay: load ? '1000ms' : '0ms' }}><Typography >INJECT BROKER LINKS</Typography></Slide></Divider>
             </Box>
-            <Box sx={{ height: "85vh" }}>
-                <Homecontent index={index} />
-                {address}
+            <Box sx={{ height: "90vh"}}>
+                <Homecontent />
             </Box >
-        </>
+        </div>
     )
 }
 export default Homepage;

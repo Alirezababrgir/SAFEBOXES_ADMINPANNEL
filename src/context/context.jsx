@@ -8,5 +8,6 @@ import { createContext } from "react"
     handleTheme:()=>{},
     handleChange:()=>{},
     handlechangetoggle:()=>{},
+    useAccount:()=>{}
 })
 export default MYcontext;
