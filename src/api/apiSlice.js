@@ -12,9 +12,9 @@ export const apiSlice = createApi({
                 body: requestData
             })//, invalidatesTags: ["BROKER"]
         }),
-        PostBrokerInfo: builder.mutation({
+        RegisterBrokerLink: builder.mutation({
             query: (requestData) => ({
-                url: `/get-broker-info/`,
+                url: `/register-broker-link/`,
                 method: "POST", // http method POST
                 body: requestData
             })//, invalidatesTags: ["BROKER"]
@@ -49,4 +49,4 @@ export const apiSlice = createApi({
         })
     })
 })
-export const { usePostTokenMutation, usePostBrokerInfoMutation, useRegisterBrokerIdMutation, useCheckTokenMutation, useRefreshTokenMutation,useLogOutMutation} = apiSlice; //Select endpoints and create hook
+export const { usePostTokenMutation, useRegisterBrokerLinkMutation , useRegisterBrokerIdMutation, useCheckTokenMutation, useRefreshTokenMutation,useLogOutMutation} = apiSlice; //Select endpoints and create hook
