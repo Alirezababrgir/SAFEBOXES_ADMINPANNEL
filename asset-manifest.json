@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/SAFEBOXES_ADMINPANNEL/static/css/main.d7dd6a89.css",
+    "main.js": "/SAFEBOXES_ADMINPANNEL/static/js/main.5e51dcbf.js",
+    "static/js/629.d61cec6c.chunk.js": "/SAFEBOXES_ADMINPANNEL/static/js/629.d61cec6c.chunk.js",
+    "static/js/858.69725837.chunk.js": "/SAFEBOXES_ADMINPANNEL/static/js/858.69725837.chunk.js",
+    "static/js/496.f3fc758b.chunk.js": "/SAFEBOXES_ADMINPANNEL/static/js/496.f3fc758b.chunk.js",
+    "static/js/753.aab95c8e.chunk.js": "/SAFEBOXES_ADMINPANNEL/static/js/753.aab95c8e.chunk.js",
+    "static/js/774.c48e10d4.chunk.js": "/SAFEBOXES_ADMINPANNEL/static/js/774.c48e10d4.chunk.js",
+    "static/js/459.eedc2fba.chunk.js": "/SAFEBOXES_ADMINPANNEL/static/js/459.eedc2fba.chunk.js",
+    "static/js/419.e9543f23.chunk.js": "/SAFEBOXES_ADMINPANNEL/static/js/419.e9543f23.chunk.js",
+    "index.html": "/SAFEBOXES_ADMINPANNEL/index.html",
+    "main.d7dd6a89.css.map": "/SAFEBOXES_ADMINPANNEL/static/css/main.d7dd6a89.css.map",
+    "main.5e51dcbf.js.map": "/SAFEBOXES_ADMINPANNEL/static/js/main.5e51dcbf.js.map",
+    "629.d61cec6c.chunk.js.map": "/SAFEBOXES_ADMINPANNEL/static/js/629.d61cec6c.chunk.js.map",
+    "858.69725837.chunk.js.map": "/SAFEBOXES_ADMINPANNEL/static/js/858.69725837.chunk.js.map",
+    "496.f3fc758b.chunk.js.map": "/SAFEBOXES_ADMINPANNEL/static/js/496.f3fc758b.chunk.js.map",
+    "774.c48e10d4.chunk.js.map": "/SAFEBOXES_ADMINPANNEL/static/js/774.c48e10d4.chunk.js.map",
+    "459.eedc2fba.chunk.js.map": "/SAFEBOXES_ADMINPANNEL/static/js/459.eedc2fba.chunk.js.map",
+    "419.e9543f23.chunk.js.map": "/SAFEBOXES_ADMINPANNEL/static/js/419.e9543f23.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d7dd6a89.css",
+    "static/js/main.5e51dcbf.js"
+  ]
+}
