@@ -3,7 +3,6 @@ import { Typography, Divider, Avatar, Box } from '@mui/material';
 import CopyrightIcon from '@mui/icons-material/Copyright';
 import { grey } from '@mui/material/colors';
 import TaBs from './tabs/Tabs';
-import { RandomReveal } from 'react-random-reveal'
 import InstagramIcon from '@mui/icons-material/Instagram';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import EmailIcon from '@mui/icons-material/Email';
@@ -30,7 +29,7 @@ const theme=useTheme();
             <Avatar sx={{ width: "150px", height: "150px", margin: "0 auto", mt: 2, display: { xs: "none", md: "block"} }} variant="circular" src='' />
             <Divider variant="middle" sx={{ mt: 2, mb: 1, color: "white" }} color={grey[600]} />
             <Typography variant="subtitle1" sx={{ textAlign: "center" }} color={grey[500]}>
-                <RandomReveal isPlaying duration={4} characters="FULL STACK DEVELOPER" />
+                <w3m-button />
             </Typography>
             <Divider variant="middle" sx={{ mt: 1, mb: 2, color: "white" }} color={grey[600]} />
             <TaBs handleChange={handleChange} />

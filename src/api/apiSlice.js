@@ -40,13 +40,13 @@ export const apiSlice = createApi({
                 body: requestData
             })//, invalidatesTags: ["BROKER"]
         }),
-        LogOut: builder.mutation({
+        ListUsers: builder.mutation({
             query: (requestData) => ({
-                url: `/logout/`,
+                url: `/listusers/`,
                 method: "POST", // http method POST
                 body: requestData
             })//, invalidatesTags: ["BROKER"]
         })
     })
 })
-export const { usePostTokenMutation, useRegisterBrokerLinkMutation , useRegisterBrokerIdMutation, useCheckTokenMutation, useRefreshTokenMutation,useLogOutMutation} = apiSlice; //Select endpoints and create hook
+export const { usePostTokenMutation, useRegisterBrokerLinkMutation , useRegisterBrokerIdMutation, useCheckTokenMutation, useRefreshTokenMutation,useListUsersMutation} = apiSlice; //Select endpoints and create hook

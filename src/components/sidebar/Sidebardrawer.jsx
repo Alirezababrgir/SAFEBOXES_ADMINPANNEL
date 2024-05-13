@@ -19,7 +19,6 @@ import MaterialUISwitch from '../../layuot/ThemeButton';
 import { useContext } from 'react';
 import MYcontext from '../../context/context';
 import { useTheme } from '@emotion/react';
-import { useAccount } from 'wagmi';
 
 const Sidebardrawer = () => {
     const theme=useTheme();
@@ -30,7 +29,7 @@ const Sidebardrawer = () => {
             setdraweropen(false);
         }
     }, [mdup,setdraweropen]);
-    const { address } = useAccount()
+
     return (
         <Grid id="Gr" item md={3} sx={{ backgroundColor: theme.palette.mode === "light" ? "#444" : grey[900], padding: "0.5rem", height: "100vh", overflowY: "auto", overflowX: "hidden" }} color={grey[100]}>
             <Box sx={{ display: { xs: "block", md: "none" }, m: 0.2 }}>
@@ -47,7 +46,7 @@ const Sidebardrawer = () => {
             </Box>
             <Avatar sx={{ width: "110px", height: "110px", margin: "0 auto"}} variant="circular" src='' />
             <Divider variant="middle" sx={{ mt: 2, mb: 1, color: "white" }} color={grey[600]} />
-            <Typography variant="subtitle2" sx={{ textAlign: "center" }} color={grey[500]}>{`...${address}`.slice(0,20)}</Typography>
+            <Typography variant="subtitle2" sx={{ textAlign: "center"}} color={grey[500]}><w3m-button /></Typography>
             <Divider variant="middle" sx={{ mt: 1, mb: 1, color: "white" }} color={grey[600]} />
             <TabsDrawer handleChange={handleChange} />
             <Divider variant="middle" sx={{ mt: 1, mb: 1, color: "white" }} color={grey[600]} />
