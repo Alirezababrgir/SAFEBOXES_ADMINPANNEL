@@ -42,7 +42,7 @@ export const apiSlice = createApi({
         }),
         ListUsers: builder.mutation({
             query: (requestData) => ({
-                url: `/listusers/`,
+                url: `/list-users/`,
                 method: "POST", // http method POST
                 body: requestData
             })//, invalidatesTags: ["BROKER"]

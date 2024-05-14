@@ -4,12 +4,12 @@ import { grey } from "@mui/material/colors";
 
 
 
-const Homecontent = ({checkresult,checkmsg,isError,isLoading,error,formik,cookies,load,theme}) => {
+const Homecontent = ({ checkresult, checkmsg, isError, isLoading, error, formik, cookies, load, theme }) => {
 
 
     return (
         <>
-            <Grid sx={{display:"none"}}>
+            <Grid style={{ display: "none" }}>
                 <Zoom direction="down" in={load} style={{ transitionDelay: load ? '1500ms' : '0ms' }}>
                     <Grid xs={12} lg={12} sx={{ display: "flex", p: 4, flexWrap: "nowrap", justifyContent: "center", alignItems: "center" }}>
                         <form onSubmit={formik.handleSubmit} autoComplete="off" style={{ backgroundColor: theme.palette.mode === "light" ? "#999" : grey[800], padding: "0.2rem", borderRadius: "0.5rem" }}>
