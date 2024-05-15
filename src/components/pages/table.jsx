@@ -22,7 +22,7 @@ const columns = [
 ];
 
 
-export default function ColumnGroupingTable({ listData: rows, cookies }) {
+export default function ColumnGroupingTable({ listData: rows }) {
 
   function createData(name, code, population, size) {
     const density = population / size;
@@ -46,42 +46,26 @@ export default function ColumnGroupingTable({ listData: rows, cookies }) {
   };
 
   return (
-    <Paper sx={{ borderRadius: "1rem", mt: 4 }}>
-      <TableContainer sx={{ maxHeight: "60vh", borderRadius: "0.5rem" }}>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-
-            <TableRow>
-              {rows ? columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ top: 0, minWidth: column.minWidth }}
-                >
-                  {column.label}
-                </TableCell>
-              )) : ""}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows ? rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === 'number'
-                            ? column.format(value)
-                            : value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              }) : row.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+    <div style={{ padding: "20px" }}>
+      <Paper sx={{ borderRadius: "1rem", mt: 2, padding: "10px" }}>
+        <TableContainer sx={{ maxHeight: "60vh", borderRadius: "0.5rem" }}>
+          <Table stickyHeader aria-label="sticky table">
+            <TableHead>
+              <TableRow>
+                {rows ? columns.map((column) => (
+                  <TableCell
+                    key={column.id}
+                    align={column.align}
+                    style={{ top: 0, minWidth: column.minWidth }}
+                  >
+                    {column.label}
+                  </TableCell>
+                )) : ""}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows ? rows
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {
                   return (
                     <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
@@ -97,20 +81,37 @@ export default function ColumnGroupingTable({ listData: rows, cookies }) {
                       })}
                     </TableRow>
                   );
-                })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={rows ? rows.length : row.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-    </Paper>
+                }) : row.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row) => {
+                    return (
+                      <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                        {columns.map((column) => {
+                          const value = row[column.id];
+                          return (
+                            <TableCell key={column.id} align={column.align}>
+                              {column.format && typeof value === 'number'
+                                ? column.format(value)
+                                : value}
+                            </TableCell>
+                          );
+                        })}
+                      </TableRow>
+                    );
+                  })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 100]}
+          component="div"
+          count={rows ? rows.length : row.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Paper>
+    </div>
   );
 }
 /*
