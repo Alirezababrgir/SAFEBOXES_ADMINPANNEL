@@ -3,10 +3,6 @@ import { Typography, Divider, Avatar, Box } from '@mui/material';
 import CopyrightIcon from '@mui/icons-material/Copyright';
 import { grey } from '@mui/material/colors';
 import TaBs from './tabs/Tabs';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import EmailIcon from '@mui/icons-material/Email';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { FormGroup, FormControl } from '@mui/material';
 import { FormControlLabel } from '@mui/material';
 import MaterialUISwitch from '../../layuot/ThemeButton';
@@ -29,27 +25,11 @@ const theme=useTheme();
             <Avatar sx={{ width: "150px", height: "150px", margin: "0 auto", mt: 2, display: { xs: "none", md: "block"} }} variant="circular" src='' />
             <Divider variant="middle" sx={{ mt: 2, mb: 1, color: "white" }} color={grey[600]} />
             <Typography variant="subtitle1" sx={{ textAlign: "center" }} color={grey[500]}>
-                <w3m-button />
+                <Box sx={{display:"flex",justifyContent:"center"}}><w3m-button /></Box>
             </Typography>
             <Divider variant="middle" sx={{ mt: 1, mb: 2, color: "white" }} color={grey[600]} />
             <TaBs handleChange={handleChange} />
-            <Divider variant="middle" sx={{ mt: 2, mb: 1, color: "white" }} color={grey[600]} />
-            <Box sx={{ m: 0 }}>
-                <a href='mailto:babrgiralireza@gmail.com' rel="noreferrer noopener" target="_blank" >
-                    <EmailIcon aria-label="Email" sx={{ color: "grey", mx: 1 }} />
-                </a>
-                <a href='https://www.github.com/alirezababrgir' rel="noreferrer noopener" target="_blank" >
-                    <GitHubIcon aria-label="Email" sx={{ color: "grey", mx: 1 }} />
-                </a>
-                <a href='https://www.instagram.com/__zakhar___/' rel="noreferrer noopener" target="_blank" >
-                    <InstagramIcon aria-label="Email" sx={{ color: "grey", mx: 1 }} />
-                </a>
-                <a href='https://www.likedin.com/alirezababrgir' rel="noreferrer noopener" target="_blank" >
-                    <LinkedInIcon aria-label="Email" sx={{ color: "grey", mx: 1 }} />
-                </a>
-            </Box>
-            <Divider variant="middle" sx={{ mt: 0.5, mb: 1, color: "white" }} color={grey[600]} />
-
+        
             <Typography variant="subtitle2" sx={{ textAlign: "center" }} color={grey[700]}>POWER BY ENTERFIRE<CopyrightIcon sx={{ color: grey[500] }} /> </Typography>
         </Grid >
     )

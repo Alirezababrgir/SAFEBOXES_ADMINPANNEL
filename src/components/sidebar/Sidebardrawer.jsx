@@ -21,14 +21,14 @@ import MYcontext from '../../context/context';
 import { useTheme } from '@emotion/react';
 
 const Sidebardrawer = () => {
-    const theme=useTheme();
+    const theme = useTheme();
     const { setdraweropen, handleChange, handleTheme, handlechangetoggle } = useContext(MYcontext);
     const mdup = useMediaQuery(Theme01.breakpoints.up("md"));
     useEffect(() => {
         if (mdup) {
             setdraweropen(false);
         }
-    }, [mdup,setdraweropen]);
+    }, [mdup, setdraweropen]);
 
     return (
         <Grid id="Gr" item md={3} sx={{ backgroundColor: theme.palette.mode === "light" ? "#444" : grey[900], padding: "0.5rem", height: "100vh", overflowY: "auto", overflowX: "hidden" }} color={grey[100]}>
@@ -36,17 +36,19 @@ const Sidebardrawer = () => {
                 <Fab onClick={handlechangetoggle} variant="circular" color='primary' size="small" aria-label='sidebar'>
                     <KeyboardDoubleArrowLeftRoundedIcon />
                 </Fab>
-                <FormControl onChange={handleTheme} sx={{mx:14, position:"absolute" }}>
-                <FormGroup >
-                    <FormControlLabel
-                        control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
-                    />
-                </FormGroup>
-            </FormControl>
+                <FormControl onChange={handleTheme} sx={{ mx: 14, position: "absolute" }}>
+                    <FormGroup >
+                        <FormControlLabel
+                            control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+                        />
+                    </FormGroup>
+                </FormControl>
             </Box>
-            <Avatar sx={{ width: "110px", height: "110px", margin: "0 auto"}} variant="circular" src='' />
+            <Avatar sx={{ width: "110px", height: "110px", margin: "0 auto" }} variant="circular" src='' />
             <Divider variant="middle" sx={{ mt: 2, mb: 1, color: "white" }} color={grey[600]} />
-            <Typography variant="subtitle2" sx={{ textAlign: "center"}} color={grey[500]}><w3m-button /></Typography>
+            <Typography variant="subtitle2" sx={{ textAlign: "center" }} color={grey[500]}>
+                <Box sx={{ display: "flex", justifyContent: "center" }}><w3m-button /></Box>
+            </Typography>
             <Divider variant="middle" sx={{ mt: 1, mb: 1, color: "white" }} color={grey[600]} />
             <TabsDrawer handleChange={handleChange} />
             <Divider variant="middle" sx={{ mt: 1, mb: 1, color: "white" }} color={grey[600]} />
