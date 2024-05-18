@@ -45,7 +45,7 @@ export const apiSlice = createApi({
                 url: `/list-users/`,
                 method: "POST", // http method POST
                 body: requestData
-            })//, invalidatesTags: ["BROKER"]
+            }), invalidatesTags: ["BROKER"]
         })
     })
 })

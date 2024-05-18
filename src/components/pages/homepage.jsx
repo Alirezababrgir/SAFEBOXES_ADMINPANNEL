@@ -15,6 +15,8 @@ import { useTheme } from "@emotion/react";
 import { Notadmin } from "./notadmin";
 import { Wellcomepage } from "./wellcomepage";
 import { Loadingpage } from "./loadingpage";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Homepage = () => {
 
@@ -33,6 +35,7 @@ const Homepage = () => {
     const [statusList, setstatusList] = useState()
     const [resultList, setresultList] = useState()
     const [sign, setSign] = useState(false)
+    const [click, setClick] = useState()
 
     //form assets
     const inputstrings = {
@@ -42,24 +45,33 @@ const Homepage = () => {
         link4: '',
     }
 
+    //handle formik
     const formik = useFormik({
         initialValues: inputstrings,
         onSubmit: (values) => {
-            handleSubmit({ token: cookies.token, link1: values.link1, link2: values.link2, link3: values.link3, link4: values.link4 });
+            handleSubmit({ uid: click, token: cookies.token, link1: values.link1, link2: values.link2, link3: values.link3, link4: values.link4 });
         },
-        validationSchema: userSchema
+        validationSchema: userSchema,
     });
+
+    //handle submit form
     const handleSubmit = async (formData) => {
         try {
             const response = await registerBrokerLink(formData);
             console.log(response.data);
             setcheckresult(response.data.result)
             setcheckmsg(response.data.message)
+            formik.resetForm()
+            if (response.data.result === true) {
+                toast.success(response.data.message)
+            } else {
+                toast.error(response.data.message)
+            }
         } catch (error) {
             console.error(error);
         }
     };
-   
+
 
 
     const [load, setload] = useState(false);
@@ -73,8 +85,8 @@ const Homepage = () => {
 
 
     //authenticate & listusers on form
-
     useEffect(() => {
+
         const auth = async () => {
 
             if (isConnected && sign === false && !cookies.token) {
@@ -96,7 +108,7 @@ const Homepage = () => {
                 setCookie('token', authenticate.data.token, { path: '/' })
             }
 
-            if (cookies.token) {
+            if (cookies.token || click === "") {
                 const listusers = await ListUsers({ token: cookies.token, list: "all", sort: "asc" })
                 console.log(listusers)
                 setstatusList(listusers.data.message)
@@ -107,7 +119,7 @@ const Homepage = () => {
                     return { name, code, population, size, index };
                 }
 
-                const rows = Object.keys(listusers.data).map((key) => listusers.data[key]).map((uid, index) => createData(index + 1, uid.uid, <p style={{ fontSize: "10px" }}>{uid.address}</p>, <Button onClick={() => { console.log(uid) }} variant="contained" key={index}>Next</Button>))
+                const rows = Object.keys(listusers.data).map((key) => listusers.data[key]).map((uid, index) => createData(index + 1, uid.uid, uid.uid, <Button onClick={() => { setClick(uid.uid) }} variant="contained" key={index}>Next</Button>))
                 setlistData(rows)
                 console.log(rows.length)
             }
@@ -115,11 +127,12 @@ const Homepage = () => {
         }
         auth()
 
-    }, [data, address, PostToken, cookies.token, setCookie, status, ListUsers, signMessage, isConnected, sign, isDisconnected, removecookie])
+    }, [data, address, PostToken, cookies.token, setCookie, status, ListUsers, signMessage, isConnected, sign, isDisconnected, removecookie, click])
 
     return (
 
         <div style={{ height: "100dvh" }} class={theme.palette.mode === "light" ? "connectwalletbg" : "connectwalletbg_dark"}>
+            <ToastContainer />
             <Helmet>
                 <title>PANNEL | INJECTBROKERLINKS</title>
             </Helmet>
@@ -132,8 +145,7 @@ const Homepage = () => {
                 <Box sx={{ display: "flex", justifyContent: "center" }}>
                     <w3m-button />
                 </Box>
-                {cookies.token && listData && listData.length > 3 ? <ColumnGroupingTable listData={listData} cookies={cookies.token} /> : cookies.token && statusList === "Not admin" && resultList === false ? <Notadmin /> : isLoadlist || isLoadtoken ? <Loadingpage /> : <Wellcomepage />}
-                <Homecontent theme={theme} load={load} address={address} cookies={cookies} checkresult={checkresult} checkmsg={checkmsg} isError={isError} isLoading={isLoading} error={error} formik={formik} />
+                {cookies.token && listData && listData.length > 3 && !click ? <ColumnGroupingTable listData={listData} cookies={cookies.token} /> : cookies.token && statusList === "Not admin" && resultList === false ? <Notadmin /> : isLoadlist || isLoadtoken || isLoading ? <Loadingpage /> : !click || isDisconnected ? <Wellcomepage /> : <Homecontent theme={theme} load={load} address={address} cookies={cookies} checkresult={checkresult} checkmsg={checkmsg} isError={isError} isLoading={isLoading} error={error} formik={formik} uid={click} setuid={setClick} />}
             </Box >
         </div>
     )

@@ -4,6 +4,7 @@ import App from './App';
 import { Store } from './store/store';
 import { Provider } from 'react-redux'
 import { CookiesProvider } from 'react-cookie';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 //web3modal
 import { polygon } from 'viem/chains';
@@ -12,6 +13,18 @@ import { createWeb3Modal } from '@web3modal/wagmi/react'
 import { defaultWagmiConfig } from '@web3modal/wagmi/react/config'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import SignClient from '@walletconnect/sign-client'
+import Homecontent from './components/pages/Homecontent';
+
+//react router
+const Router = createBrowserRouter([{
+    path: "/",
+    element: <App />,
+    errorElement: "notfound",
+    children: [
+        { path: "/homecontent/", element: "h" }
+    ]
+}])
+
 //connectwallet config
 const chains = [polygon]
 const projectId = 'f980f8b2fda0dff238361ea6666e382e'
@@ -36,7 +49,7 @@ root.render(
         <WagmiProvider config={wagmiConfig}>
             <QueryClientProvider client={queryClient}>
                 <CookiesProvider defaultSetOptions={{ path: '/' }}>
-                    <App />
+                    <RouterProvider router={Router} />
                 </CookiesProvider>
             </QueryClientProvider>
         </WagmiProvider>

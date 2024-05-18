@@ -10,8 +10,6 @@ import { useState } from 'react';
 
 const columns = [
   { id: 'name', label: 'COUNT', minWidth: 40 },
-  { id: 'code', label: 'UID', minWidth: 40 },
-  { id: 'population', label: 'ADDRESS', minWidth: 20 },
   { id: 'code', label: 'UID', minWidth: 100 },
   {
     id: 'size',
