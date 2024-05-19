@@ -36,6 +36,7 @@ const Homepage = () => {
     const [resultList, setresultList] = useState()
     const [sign, setSign] = useState(false)
     const [click, setClick] = useState()
+    const [list, setList] = useState("all")
 
     //form assets
     const inputstrings = {
@@ -109,7 +110,7 @@ const Homepage = () => {
             }
 
             if (cookies.token || click === "") {
-                const listusers = await ListUsers({ token: cookies.token, list: "all", sort: "asc" })
+                const listusers = await ListUsers({ token: cookies.token, list: list, sort: "asc" })
                 console.log(listusers)
                 setstatusList(listusers.data.message)
                 setresultList(listusers.data.result)
@@ -127,8 +128,20 @@ const Homepage = () => {
         }
         auth()
 
-    }, [data, address, PostToken, cookies.token, setCookie, status, ListUsers, signMessage, isConnected, sign, isDisconnected, removecookie, click])
+    }, [data, address, PostToken, cookies.token, setCookie, status, ListUsers, signMessage, isConnected, sign, isDisconnected, removecookie, click, list])
 
+    const handleLink1 = () => {
+        setList("id&!link1")
+    }
+    const handleLink2 = () => {
+        setList("id&!link2")
+    }
+    const handleLink3 = () => {
+        setList("id&!link3")
+    }
+    const handleLink4 = () => {
+        setList("id&!link4")
+    }
     return (
 
         <div style={{ height: "100dvh" }} class={theme.palette.mode === "light" ? "connectwalletbg" : "connectwalletbg_dark"}>
@@ -145,7 +158,7 @@ const Homepage = () => {
                 <Box sx={{ display: "flex", justifyContent: "center" }}>
                     <w3m-button />
                 </Box>
-                {cookies.token && listData && listData.length > 3 && !click ? <ColumnGroupingTable listData={listData} cookies={cookies.token} /> : cookies.token && statusList === "Not admin" && resultList === false ? <Notadmin /> : isLoadlist || isLoadtoken || isLoading ? <Loadingpage /> : !click || isDisconnected ? <Wellcomepage /> : <Homecontent theme={theme} load={load} address={address} cookies={cookies} checkresult={checkresult} checkmsg={checkmsg} isError={isError} isLoading={isLoading} error={error} formik={formik} uid={click} setuid={setClick} />}
+                {cookies.token && listData && listData.length > 3 && !click ? <ColumnGroupingTable handleLink1={handleLink1} handleLink2={handleLink2} handleLink3={handleLink3} handleLink4={handleLink4} listData={listData} cookies={cookies.token} /> : cookies.token && statusList === "Not admin" && resultList === false ? <Notadmin /> : isLoadlist || isLoadtoken || isLoading ? <Loadingpage /> : !click || isDisconnected ? <Wellcomepage /> : <Homecontent theme={theme} load={load} address={address} cookies={cookies.token} checkresult={checkresult} checkmsg={checkmsg} isError={isError} isLoading={isLoading} error={error} formik={formik} uid={click} setuid={setClick} />}
             </Box >
         </div>
     )

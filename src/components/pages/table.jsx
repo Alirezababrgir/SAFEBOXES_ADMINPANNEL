@@ -10,17 +10,19 @@ import { useState } from 'react';
 
 const columns = [
   { id: 'name', label: 'COUNT', minWidth: 40 },
-  { id: 'code', label: 'UID', minWidth: 100 },
+  { id: 'code', label: 'UID', minWidth: 40 },
+  { id: 'code', label: 'UID', minWidth: 40 },
+
   {
     id: 'size',
-    minWidth: 70,
+    minWidth: 50,
     format: (value) => value.toLocaleString('en-US'),
   },
 
 ];
 
 
-export default function ColumnGroupingTable({ listData: rows }) {
+export default function ColumnGroupingTable({ listData: rows, handleLink1, handleLink2, handleLink3, handleLink4 }) {
 
   function createData(name, code, population, size) {
     const density = population / size;
@@ -45,10 +47,32 @@ export default function ColumnGroupingTable({ listData: rows }) {
 
   return (
     <div style={{ padding: "20px" }}>
-      <Paper sx={{ borderRadius: "1rem", mt: 2, padding: "10px" }}>
+      <Paper sx={{ borderRadius: "1rem", mt: 2, padding: "0px" }}>
         <TableContainer sx={{ maxHeight: "60vh", borderRadius: "0.5rem" }}>
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
+              <TableRow>
+                <TableCell align="center" >
+                  <button onClick={handleLink1} style={{ border: "none", cursor: "pointer",borderRadius:"1rem",padding:"5px" }}>
+                    link1
+                  </button>
+                </TableCell>
+                <TableCell align="center" >
+                  <button onClick={handleLink2} style={{ border: "none", cursor: "pointer",borderRadius:"1rem",padding:"5px" }}>
+                    link2
+                  </button>
+                </TableCell>
+                <TableCell align="center">
+                  <button onClick={handleLink3} style={{ border: "none", cursor: "pointer",borderRadius:"1rem",padding:"5px" }}>
+                    link3
+                  </button>
+                </TableCell>
+                <TableCell align="center">
+                  <button onClick={handleLink4} style={{ border: "none", cursor: "pointer",borderRadius:"1rem",padding:"5px" }}>
+                    link4
+                  </button>
+                </TableCell>
+              </TableRow>
               <TableRow>
                 {rows ? columns.map((column) => (
                   <TableCell

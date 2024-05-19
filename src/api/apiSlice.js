@@ -33,9 +33,9 @@ export const apiSlice = createApi({
                 body: requestData
             })//, invalidatesTags: ["BROKER"]
         }),
-        RefreshToken: builder.mutation({
+        GetBrokerIds: builder.mutation({
             query: (requestData) => ({
-                url: `/refresh-token/`,
+                url: `/get-broker-ids/`,
                 method: "POST", // http method POST
                 body: requestData
             })//, invalidatesTags: ["BROKER"]
@@ -49,4 +49,4 @@ export const apiSlice = createApi({
         })
     })
 })
-export const { usePostTokenMutation, useRegisterBrokerLinkMutation , useRegisterBrokerIdMutation, useCheckTokenMutation, useRefreshTokenMutation,useListUsersMutation} = apiSlice; //Select endpoints and create hook
+export const { usePostTokenMutation, useRegisterBrokerLinkMutation , useRegisterBrokerIdMutation, useCheckTokenMutation, useGetBrokerIdsMutation,useListUsersMutation} = apiSlice; //Select endpoints and create hook

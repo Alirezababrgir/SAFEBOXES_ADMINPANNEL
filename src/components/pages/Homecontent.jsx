@@ -1,20 +1,41 @@
 //form imports
 import { Grid, TextField, Button, CardActions, CardContent, Zoom, Typography } from "@mui/material";
 import { grey } from "@mui/material/colors";
+import { useEffect, useState } from "react";
+import { useGetBrokerIdsMutation } from "../../api/apiSlice";
+import { Loadingpage } from "./loadingpage";
 
 
+const Homecontent = ({ checkresult, isError, isLoading, error, formik, load, theme, setuid, uid, cookies }) => {
 
-const Homecontent = ({ checkresult, checkmsg, isError, isLoading, error, formik, cookies, load, theme, setuid, uid }) => {
-
+    const [GetBrokerIds, { isLoading: loadingInfo }] = useGetBrokerIdsMutation();
+    const [cxid, setcxid] = useState()
 
     const handleBack = () => {
         setuid("")
 
     }
+
+    //get-broker-ids
+    useEffect(() => {
+        const getInfo = async () => {
+
+            try {
+                const getbrokerids = await GetBrokerIds({ token: cookies, uid: uid })
+                console.log(getbrokerids.data)
+                setcxid(getbrokerids.data.cx_id)
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getInfo()
+    }, [GetBrokerIds, cookies, uid])
+
     console.log(uid)
     return (
         <>
-            <Grid sx={{ marginTop: "80px" }}>
+            {loadingInfo ? <Loadingpage /> : <Grid sx={{ marginTop: "80px" }}>
                 <Zoom direction="down" in={load} style={{ transitionDelay: load ? '1500ms' : '0ms' }}>
                     <Grid xs={12} lg={12} sx={{ display: "flex", p: 4, flexWrap: "nowrap", justifyContent: "center", alignItems: "center" }}>
                         <form onSubmit={formik.handleSubmit} autoComplete="off" style={{ backgroundColor: theme.palette.mode === "light" ? "#999" : grey[800], padding: "0.2rem", borderRadius: "0.5rem" }}>
@@ -23,7 +44,7 @@ const Homecontent = ({ checkresult, checkmsg, isError, isLoading, error, formik,
                                     <Grid container>
                                         <Grid xs={4} md={4}>
                                             <Typography color={"skyblue"} variant="h5">
-                                                {`CXID:r567w567w`}
+                                                {`CXID:${cxid}`}
                                             </Typography>
                                         </Grid>
                                         <Grid xs={4} md={4}>
@@ -120,7 +141,6 @@ const Homecontent = ({ checkresult, checkmsg, isError, isLoading, error, formik,
                                             variant="contained"
                                             sx={{ mt: 2 }}
                                             fullWidth
-                                            disabled={!cookies.token}
                                         >
                                             {isLoading ? <span>sending...</span> : isError ? <span>{error.message}</span> : <span>confirm</span>}
                                         </Button>
@@ -133,7 +153,6 @@ const Homecontent = ({ checkresult, checkmsg, isError, isLoading, error, formik,
                                             variant="contained"
                                             sx={{ mt: 2 }}
                                             fullWidth
-                                            disabled={!cookies.token}
                                         >
                                             {checkresult === true ? <span>back</span> : <span>cancel</span>}
                                         </Button>
@@ -143,7 +162,7 @@ const Homecontent = ({ checkresult, checkmsg, isError, isLoading, error, formik,
                         </form>
                     </Grid>
                 </Zoom>
-            </Grid>
+            </Grid>}
         </>
     )
 }
