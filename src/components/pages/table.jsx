@@ -54,22 +54,22 @@ export default function ColumnGroupingTable({ listData: rows, handleLink1, handl
               <TableRow>
                 <TableCell align="center" >
                   <button onClick={handleLink1} style={{ border: "none", cursor: "pointer",borderRadius:"1rem",padding:"5px" }}>
-                    link1
+                    10%
                   </button>
                 </TableCell>
                 <TableCell align="center" >
                   <button onClick={handleLink2} style={{ border: "none", cursor: "pointer",borderRadius:"1rem",padding:"5px" }}>
-                    link2
+                    25%
                   </button>
                 </TableCell>
                 <TableCell align="center">
                   <button onClick={handleLink3} style={{ border: "none", cursor: "pointer",borderRadius:"1rem",padding:"5px" }}>
-                    link3
+                    60%
                   </button>
                 </TableCell>
                 <TableCell align="center">
                   <button onClick={handleLink4} style={{ border: "none", cursor: "pointer",borderRadius:"1rem",padding:"5px" }}>
-                    link4
+                    150%
                   </button>
                 </TableCell>
               </TableRow>
