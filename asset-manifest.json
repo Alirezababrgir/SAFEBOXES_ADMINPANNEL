@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/SAFEBOXES_ADMINPANNEL/static/css/main.a9ec8de0.css",
-    "main.js": "/SAFEBOXES_ADMINPANNEL/static/js/main.9202e5b0.js",
+    "main.js": "/SAFEBOXES_ADMINPANNEL/static/js/main.299b6738.js",
     "static/js/629.d61cec6c.chunk.js": "/SAFEBOXES_ADMINPANNEL/static/js/629.d61cec6c.chunk.js",
     "static/js/858.69725837.chunk.js": "/SAFEBOXES_ADMINPANNEL/static/js/858.69725837.chunk.js",
     "static/js/496.f3fc758b.chunk.js": "/SAFEBOXES_ADMINPANNEL/static/js/496.f3fc758b.chunk.js",
@@ -11,7 +11,7 @@
     "static/js/419.e9543f23.chunk.js": "/SAFEBOXES_ADMINPANNEL/static/js/419.e9543f23.chunk.js",
     "index.html": "/SAFEBOXES_ADMINPANNEL/index.html",
     "main.a9ec8de0.css.map": "/SAFEBOXES_ADMINPANNEL/static/css/main.a9ec8de0.css.map",
-    "main.9202e5b0.js.map": "/SAFEBOXES_ADMINPANNEL/static/js/main.9202e5b0.js.map",
+    "main.299b6738.js.map": "/SAFEBOXES_ADMINPANNEL/static/js/main.299b6738.js.map",
     "629.d61cec6c.chunk.js.map": "/SAFEBOXES_ADMINPANNEL/static/js/629.d61cec6c.chunk.js.map",
     "858.69725837.chunk.js.map": "/SAFEBOXES_ADMINPANNEL/static/js/858.69725837.chunk.js.map",
     "496.f3fc758b.chunk.js.map": "/SAFEBOXES_ADMINPANNEL/static/js/496.f3fc758b.chunk.js.map",
@@ -21,6 +21,6 @@
   },
   "entrypoints": [
     "static/css/main.a9ec8de0.css",
-    "static/js/main.9202e5b0.js"
+    "static/js/main.299b6738.js"
   ]
 }
