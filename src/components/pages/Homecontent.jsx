@@ -43,17 +43,19 @@ const Homecontent = ({ checkresult, isError, isLoading, error, formik, load, the
                                 <Grid container>
                                     <Grid container>
                                         <Grid xs={4} md={4}>
-                                            <Typography color={"skyblue"} variant="h5">
+                                            <Typography color={grey} variant="h5">
+                                                {`COUNT:${10}`}
+                                            </Typography>
+                                        </Grid>
+                                        <Grid xs={4} md={4}>
+                                            {cxid ? <Typography color={grey} variant="h5">
                                                 {`CXID:${cxid}`}
-                                            </Typography>
+                                            </Typography> : <Typography color={grey} variant="h5">
+                                                {`CXID:empty`}
+                                            </Typography>}
                                         </Grid>
                                         <Grid xs={4} md={4}>
-                                            <Typography color={"skyblue"} variant="h5">
-                                                {`CXID:r567w5`}
-                                            </Typography>
-                                        </Grid>
-                                        <Grid xs={4} md={4}>
-                                            <Typography color={"skyblue"} variant="h5">
+                                            <Typography color={grey} variant="h5">
                                                 {`UID:${uid}`}
                                             </Typography>
                                         </Grid>

@@ -37,7 +37,7 @@ export const Notadmin = () => {
                     <div className="text">
                         <article>
                             <p>Oops! not found data on serser !</p>
-                            <a href="https://www.facebook.com/CongresswomanAnnMatibag/"><button>VISIT OUR FACEBOOK PAGE</button></a>
+                            <button>plase change account</button>
                         </article>
                     </div>
                 </div>

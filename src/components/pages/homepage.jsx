@@ -66,13 +66,16 @@ const Homepage = () => {
             if (response.data.result === true) {
                 toast.success(response.data.message)
             } else {
-                toast.error(response.data.message)
+                toast.error(`Registration of at least one link is required !`)
             }
         } catch (error) {
             console.error(error);
         }
     };
 
+    const handleBackall = () => {
+        setList("all")
+    }
 
 
     const [load, setload] = useState(false);
@@ -123,6 +126,9 @@ const Homepage = () => {
                 const rows = Object.keys(listusers.data).map((key) => listusers.data[key]).map((uid, index) => createData(index + 1, uid.uid, uid.uid, <Button onClick={() => { setClick(uid.uid) }} variant="contained" key={index}>Next</Button>))
                 setlistData(rows)
                 console.log(rows.length)
+                if (rows.length < 1) {
+                    toast.error("Empty List")
+                }
             }
 
         }
@@ -130,6 +136,7 @@ const Homepage = () => {
 
     }, [data, address, PostToken, cookies.token, setCookie, status, ListUsers, signMessage, isConnected, sign, isDisconnected, removecookie, click, list])
 
+    //handle options
     const handleLink1 = () => {
         setList("id&!link1")
     }
@@ -158,7 +165,8 @@ const Homepage = () => {
                 <Box sx={{ display: "flex", justifyContent: "center" }}>
                     <w3m-button />
                 </Box>
-                {cookies.token && listData && listData.length > 3 && !click ? <ColumnGroupingTable handleLink1={handleLink1} handleLink2={handleLink2} handleLink3={handleLink3} handleLink4={handleLink4} listData={listData} cookies={cookies.token} /> : cookies.token && statusList === "Not admin" && resultList === false ? <Notadmin /> : isLoadlist || isLoadtoken || isLoading ? <Loadingpage /> : !click || isDisconnected ? <Wellcomepage /> : <Homecontent theme={theme} load={load} address={address} cookies={cookies.token} checkresult={checkresult} checkmsg={checkmsg} isError={isError} isLoading={isLoading} error={error} formik={formik} uid={click} setuid={setClick} />}
+                {cookies.token && listData && !click && !resultList && !statusList ? <ColumnGroupingTable handleLink1={handleLink1} handleLink2={handleLink2} handleLink3={handleLink3} handleLink4={handleLink4} listData={listData} cookies={cookies.token} /> : cookies.token && statusList === "Not admin" && resultList === false ? <Notadmin /> : isLoadlist || isLoadtoken || isLoading ? <Loadingpage /> : !click || isDisconnected ? <Wellcomepage /> : <Homecontent theme={theme} load={load} address={address} cookies={cookies.token} checkresult={checkresult} checkmsg={checkmsg} isError={isError} isLoading={isLoading} error={error} formik={formik} uid={click} setuid={setClick} />}
+                {cookies.token && listData && !click && !resultList && !statusList ? <Button sx={list === "all" ? { display: "none" } : null} variant="contained" onClick={handleBackall}>All Users</Button> : null}
             </Box >
         </div>
     )

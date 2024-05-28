@@ -2,10 +2,6 @@ import SwipeableViews from 'react-swipeable-views';
 import { Box } from '@mui/material';
 import Tabpanel from '../Tabpanel';
 import Homepage from './homepage';
-import About from './aboutpage';
-import Resoume from './resoumepage';
-import Projects from './projects';
-import ConnectMe from './ConnectMe';
 import { Theme01 } from '../../layuot/theme';
 const Pages = ({ handlepageformobile, value }) => {
   return (
@@ -15,7 +11,23 @@ const Pages = ({ handlepageformobile, value }) => {
           <Homepage />
         </Box>
       </Tabpanel>
-      <Tabpanel index={1}>
+     
+    </SwipeableViews>
+  )
+}
+export default Pages;
+
+/*
+
+******more pages******
+
+import About from './aboutpage';
+import Resoume from './resoumepage';
+import Projects from './projects';
+import ConnectMe from './ConnectMe';
+
+
+ <Tabpanel index={1}>
         <Box >
           <About />
         </Box>
@@ -35,7 +47,4 @@ const Pages = ({ handlepageformobile, value }) => {
           <ConnectMe />
         </Box>
       </Tabpanel>
-    </SwipeableViews>
-  )
-}
-export default Pages;
+      */
