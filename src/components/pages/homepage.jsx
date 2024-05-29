@@ -37,6 +37,11 @@ const Homepage = () => {
     const [sign, setSign] = useState(false)
     const [click, setClick] = useState()
     const [list, setList] = useState("all")
+    const [colorlist1, setcolorList1] = useState("black")
+    const [colorlist2, setcolorList2] = useState("black")
+    const [colorlist3, setcolorList3] = useState("black")
+    const [colorlist4, setcolorList4] = useState("black")
+
 
     //form assets
     const inputstrings = {
@@ -75,6 +80,10 @@ const Homepage = () => {
 
     const handleBackall = () => {
         setList("all")
+        setcolorList1("black")
+        setcolorList2("black")
+        setcolorList3("black")
+        setcolorList4("black")
     }
 
 
@@ -139,15 +148,32 @@ const Homepage = () => {
     //handle options
     const handleLink1 = () => {
         setList("id&!link1")
+        setcolorList1("red")
+        setcolorList2("black")
+        setcolorList3("black")
+        setcolorList4("black")
+
     }
     const handleLink2 = () => {
         setList("id&!link2")
+        setcolorList2("red")
+        setcolorList1("black")
+        setcolorList3("black")
+        setcolorList4("black")
     }
     const handleLink3 = () => {
         setList("id&!link3")
+        setcolorList3("red")
+        setcolorList1("black")
+        setcolorList2("black")
+        setcolorList4("black")
     }
     const handleLink4 = () => {
         setList("id&!link4")
+        setcolorList4("red")
+        setcolorList1("black")
+        setcolorList2("black")
+        setcolorList3("black")
     }
     return (
 
@@ -165,7 +191,7 @@ const Homepage = () => {
                 <Box sx={{ display: "flex", justifyContent: "center" }}>
                     <w3m-button />
                 </Box>
-                {cookies.token && listData && !click && !resultList && !statusList ? <ColumnGroupingTable handleLink1={handleLink1} handleLink2={handleLink2} handleLink3={handleLink3} handleLink4={handleLink4} listData={listData} cookies={cookies.token} /> : cookies.token && statusList === "Not admin" && resultList === false ? <Notadmin /> : isLoadlist || isLoadtoken || isLoading ? <Loadingpage /> : !click || isDisconnected ? <Wellcomepage /> : <Homecontent theme={theme} load={load} address={address} cookies={cookies.token} checkresult={checkresult} checkmsg={checkmsg} isError={isError} isLoading={isLoading} error={error} formik={formik} uid={click} setuid={setClick} />}
+                {cookies.token && listData && !click && !resultList && !statusList ? <ColumnGroupingTable colorlist4={colorlist4} colorlist3={colorlist3}  colorlist2={colorlist2}  colorlist1={colorlist1} handleLink1={handleLink1} handleLink2={handleLink2} handleLink3={handleLink3} handleLink4={handleLink4} listData={listData} cookies={cookies.token} /> : cookies.token && statusList === "Not admin" && resultList === false ? <Notadmin /> : isLoadlist || isLoadtoken || isLoading ? <Loadingpage /> : !click || isDisconnected ? <Wellcomepage /> : <Homecontent theme={theme} load={load} address={address} cookies={cookies.token} checkresult={checkresult} checkmsg={checkmsg} isError={isError} isLoading={isLoading} error={error} formik={formik} uid={click} setuid={setClick} />}
                 {cookies.token && listData && !click && !resultList && !statusList ? <Button sx={list === "all" ? { display: "none" } : null} variant="contained" onClick={handleBackall}>All Users</Button> : null}
             </Box >
         </div>

@@ -22,7 +22,7 @@ const columns = [
 ];
 
 
-export default function ColumnGroupingTable({ listData: rows, handleLink1, handleLink2, handleLink3, handleLink4 }) {
+export default function ColumnGroupingTable({ listData: rows, handleLink1, handleLink2, handleLink3, handleLink4, colorlist1, colorlist2, colorlist3, colorlist4 }) {
 
   function createData(name, code, population, size) {
     const density = population / size;
@@ -53,22 +53,22 @@ export default function ColumnGroupingTable({ listData: rows, handleLink1, handl
             <TableHead>
               <TableRow>
                 <TableCell align="center" >
-                  <button onClick={handleLink1} style={{ border: "none", cursor: "pointer",borderRadius:"1rem",padding:"5px" }}>
+                  <button onClick={handleLink1} style={{ border: "none", cursor: "pointer", borderRadius: "1rem", padding: "5px", color: colorlist1 }}>
                     10%
                   </button>
                 </TableCell>
                 <TableCell align="center" >
-                  <button onClick={handleLink2} style={{ border: "none", cursor: "pointer",borderRadius:"1rem",padding:"5px" }}>
+                  <button onClick={handleLink2} style={{ border: "none", cursor: "pointer", borderRadius: "1rem", padding: "5px", color: colorlist2 }}>
                     25%
                   </button>
                 </TableCell>
                 <TableCell align="center">
-                  <button onClick={handleLink3} style={{ border: "none", cursor: "pointer",borderRadius:"1rem",padding:"5px" }}>
+                  <button onClick={handleLink3} style={{ border: "none", cursor: "pointer", borderRadius: "1rem", padding: "5px", color: colorlist3 }}>
                     60%
                   </button>
                 </TableCell>
                 <TableCell align="center">
-                  <button onClick={handleLink4} style={{ border: "none", cursor: "pointer",borderRadius:"1rem",padding:"5px" }}>
+                  <button onClick={handleLink4} style={{ border: "none", cursor: "pointer", borderRadius: "1rem", padding: "5px", color: colorlist4 }}>
                     150%
                   </button>
                 </TableCell>

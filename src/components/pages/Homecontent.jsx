@@ -5,12 +5,14 @@ import { useEffect, useState } from "react";
 import { useGetBrokerIdsMutation } from "../../api/apiSlice";
 import { Loadingpage } from "./loadingpage";
 import { ToastContainer, toast } from "react-toastify";
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 
 const Homecontent = ({ checkresult, isError, isLoading, error, formik, load, theme, setuid, uid, cookies }) => {
 
     const [GetBrokerIds, { isLoading: loadingInfo }] = useGetBrokerIdsMutation();
     const [cxid, setcxid] = useState()
+    const [refid, setrefid] = useState()
     const [link1, setlink1] = useState()
     const [link2, setlink2] = useState()
     const [link3, setlink3] = useState()
@@ -28,6 +30,7 @@ const Homecontent = ({ checkresult, isError, isLoading, error, formik, load, the
             try {
                 const getbrokerids = await GetBrokerIds({ token: cookies, uid: uid })
                 console.log(getbrokerids.data)
+                setrefid(getbrokerids.data.ra_ecm)
                 setcxid(getbrokerids.data.cx_id)
                 setlink1(getbrokerids.data.link1)
                 setlink2(getbrokerids.data.link2)
@@ -50,23 +53,24 @@ const Homecontent = ({ checkresult, isError, isLoading, error, formik, load, the
                         <form onSubmit={formik.handleSubmit} autoComplete="off" style={{ backgroundColor: theme.palette.mode === "light" ? grey[100] : grey[800], padding: "0.2rem", borderRadius: "0.5rem" }}>
                             <CardContent>
                                 <Grid container>
-                                    <Grid container>
-                                        <Grid xs={4} md={4}>
-                                            <Typography color={theme.palette.mode === "light" ? grey[900] : grey[100]} variant="h4">
-                                                {`REF:empty`}
-                                            </Typography>
-                                        </Grid>
-                                        <Grid xs={4} md={4}>
+                                    <Grid sx={{ mb: 2 }} container>
+                                        <Grid xs={6} md={6}>
                                             {cxid ? <Typography variant="h4" color={theme.palette.mode === "light" ? grey[900] : grey[100]} >
-                                                {`CXID:${cxid}`}
-                                            </Typography> : <Typography color={theme.palette.mode === "light" ? grey[900] : grey[100]}  variant="h4">
+                                                <CopyToClipboard text={`${cxid}`}>
+                                                    <Button variant="contained" size="small">{`${cxid}`}</Button>
+                                                </CopyToClipboard>
+                                            </Typography> : <Typography color={theme.palette.mode === "light" ? grey[900] : grey[100]} variant="h4">
                                                 {`CXID:empty`}
                                             </Typography>}
                                         </Grid>
-                                        <Grid xs={4} md={4}>
-                                            <Typography color={theme.palette.mode === "light" ? grey[900] : grey[100]} variant="h4">
-                                                {`UID:${uid}`}
-                                            </Typography>
+                                        <Grid xs={6} md={6}>
+                                            {cxid ? <Typography variant="h4" color={theme.palette.mode === "light" ? grey[900] : grey[100]} >
+                                                <CopyToClipboard text={`${refid}`}>
+                                                    <Button variant="contained" size="small"> {`${refid}`}</Button>
+                                                </CopyToClipboard>
+                                            </Typography> : <Typography color={theme.palette.mode === "light" ? grey[900] : grey[100]} variant="h4">
+                                                {`REFID:empty`}
+                                            </Typography>}
                                         </Grid>
                                     </Grid>
                                     <Grid
@@ -76,7 +80,6 @@ const Homecontent = ({ checkresult, isError, isLoading, error, formik, load, the
                                         <Grid container >
                                             <Grid xs={12} md={12} sx={{ mt: 1 }}>
                                                 <TextField
-                                                    disabled={link1}
                                                     fullWidth
                                                     size="small"
                                                     color="primary"
@@ -92,7 +95,6 @@ const Homecontent = ({ checkresult, isError, isLoading, error, formik, load, the
                                             </Grid>
                                             <Grid xs={12} md={12} sx={{ mt: 1 }}>
                                                 <TextField
-                                                    disabled={link2}
                                                     fullWidth
                                                     size="small"
                                                     color="primary"
@@ -108,7 +110,6 @@ const Homecontent = ({ checkresult, isError, isLoading, error, formik, load, the
                                             </Grid>
                                             <Grid xs={12} md={12} sx={{ mt: 1 }}>
                                                 <TextField
-                                                    disabled={link3}
                                                     fullWidth
                                                     size="small"
                                                     color="primary"
@@ -124,7 +125,6 @@ const Homecontent = ({ checkresult, isError, isLoading, error, formik, load, the
                                             </Grid>
                                             <Grid xs={12} md={12} sx={{ mt: 1 }}>
                                                 <TextField
-                                                    disabled={link4}
                                                     fullWidth
                                                     size="small"
                                                     color="primary"
